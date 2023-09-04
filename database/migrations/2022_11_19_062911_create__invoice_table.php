@@ -34,6 +34,7 @@ class CreateInvoiceTable extends Migration
             $table->string('CGST');
             $table->string('SGST/UTGST');
             $table->string('SupplyType');
+            $table->string('Status');
             $table->unsignedBigInteger('customer_users_id');
             $table->foreign('customer_users_id')->references('customer_users_id')->on('customer_users');
             $table->unsignedBigInteger('CustomerId');

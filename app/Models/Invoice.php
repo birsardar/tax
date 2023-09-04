@@ -11,21 +11,10 @@ class Invoice extends Model
     protected $table = "invoice";
     protected $primaryKey = "InvoiceId";
     protected $fillable = [
-        'SalesType',
-        'GST_No/State',
-        'InvoiceNumber',
-        "PartyName",
-        'InvoiceDate',
-        'goodservices',
-        'taxablevalue',
-        'HSNSAC',
-        'quantity',
-        'UQC',
-        'GstRate',
-        'IGST',
-        'CGST',
-        'SGSTUTGST',
+        'SalesType', 'GST_No', 'InvoiceNumber', 'PartyName', 'InvoiceDate', 'taxablevalue', 'HSNSAC',
+        'goodservices', 'UQC', 'quantity', 'GstRate', 'IGST', 'CGST', 'SGSTUTGST', 'user_id', 'Status',
     ];
+
 
     function getcustomer_users_id()
     {

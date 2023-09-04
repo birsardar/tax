@@ -27,9 +27,9 @@ class CreateInvoice extends Controller
     }
 
 
-    public function delete($InvoiceId)
+    public function delete($id)
     {
-        Invoice::find($InvoiceId)->delete();
+        Invoice::where('id', $id)->delete();
         return redirect()->back();
     }
     public function CreateInvoiceSubmit(Request $req)
@@ -52,8 +52,25 @@ class CreateInvoice extends Controller
         //     'gstValue' => 'required|numeric',
         //     'stauts' => 'required'
         // ]);
-        $user = Auth::user();
+
+        // Assuming the user is authenticated
+        $user_id = Auth::user()->id;
+
+        // Retrieve the customer's id
+        $customer = add_customer::where('user_id', $user_id)->first();
+        // dd($req->all());
         // Insert data into the 'invoice' table
+        // Initialize the variables
+
+        // Check the value of 'status' input
+        $paid = 0;
+        $unpaid = 0;
+        if ($req->input('status') == 'Paid') {
+            $paid = $req->input('gstValue');
+        } else {
+            $unpaid = $req->input('gstValue');
+        }
+        // dd($paid, $unpaid);
         Invoice::create([
             'SalesType' => $req->input('SalesType'),
             'GST_No' => $req->input('gstno'),
@@ -69,11 +86,14 @@ class CreateInvoice extends Controller
             'IGST' => $req->input('IGST'),
             'CGST' => $req->input('CGST'),
             'SGSTUTGST' => $req->input('gstValue'),
-            'user_id' => $user->id,
-            'Status' => $req->input('status')
+            'user_id' => $user_id,
+            'customer_id' => $customer->id,
+            'Status' => $req->input('status'),
+            'paid' => $paid,
+            'unpaid' => $unpaid,
+
         ]);
-        // dd('success');
-        // Redirect to a success page or any other page as needed
+
         return redirect()->route('invoice')->with('success', 'Invoice created successfully!');
     }
 }

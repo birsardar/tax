@@ -17,15 +17,15 @@ class CreateAddCustomerTable extends Migration
             $table->id();
             $table->string('CustomerName');
             $table->string('CustomerAddress');
-            $table->decimal('GstNumber');
+            $table->string('GstNumber');
             $table->string('PanNumber');
             $table->string('Email');
-            $table->decimal('MobileNumber');
+            $table->string('MobileNumber');
             $table->string('BankName');
             $table->string('IFSC');
-            $table->decimal('BankAccount');
-            $table->unsignedBigInteger('customer_users_id');
-            $table->foreign('customer_users_id')->references('customer_users_id')->on('customer_users');
+            $table->string('BankAccount');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

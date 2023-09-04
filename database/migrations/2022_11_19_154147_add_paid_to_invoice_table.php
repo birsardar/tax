@@ -14,8 +14,8 @@ class AddPaidToInvoiceTable extends Migration
     public function up()
     {
         Schema::table('invoice', function (Blueprint $table) {
-            $table->decimal('paid');
-            $table->decimal('Unpaid');
+            $table->decimal('paid')->default(0);
+            $table->decimal('unpaid')->default(0);
         });
     }
 

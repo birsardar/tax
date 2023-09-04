@@ -8,8 +8,8 @@
 <body>
     <!-- Wrapper -->
     <div class="hk-wrapper" data-layout="vertical" data-layout-style="default" data-menu="light" data-footer="simple">
-
-        @include('vertical-nav')
+        {{--
+        @include('vertical-nav') --}}
 
 
         <!-- Main Content -->
@@ -24,7 +24,7 @@
                                 <div data-simplebar class="nicescroll-bar">
                                     <div class="container">
                                         <form method="post"
-                                            action="{{ url('/CreateCustomerInvoice') }}{{ $CustomerDetail[0]->CustomerId }}">
+                                            action="{{ url('/CreateCustomerInvoice') }}{{ $CustomerDetail[$index]->CustomerId }}">
                                             @csrf
                                             <div class="create-invoice-wrap mt-xxl-5 p-md-5 p-3">
                                                 <div class="row">
@@ -54,8 +54,8 @@
                                                         </a>
                                                         <div class="collapse show" id="address_collpase">
                                                             <div class="address-wrap">
-                                                                <h6>{{ $user[0]->name }}</h6>
-                                                                <p>{{ $user_profile[0]->office_address }}</p>
+                                                                <h6>{{ $CustomerDetail[$index]->CustomerName }}</h6>
+                                                                <p>{{ $CustomerDetail[$index]->CustomerAddress }}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -98,7 +98,7 @@
                                                             </div>
                                                             <div class="col-lg-6 form-group">
                                                                 <input class="form-control" name="single-date-pick"
-                                                                    value="{{ $CustomerDetail[0]->GstNumber }}"
+                                                                    value="{{ $CustomerDetail[$index]->GstNumber }}"
                                                                     type="input" readonly />
                                                             </div>
                                                         </div>
@@ -130,7 +130,7 @@
                                                             <div class="col-sm-12">
                                                                 <div class="form-group">
                                                                     <input class="form-control" type="text"
-                                                                        value="{{ $CustomerDetail[0]->CustomerName }}"
+                                                                        value="{{ $CustomerDetail[$index]->CustomerName }}"
                                                                         name="GstNumber" placeholder="Billed To"
                                                                         readonly />
                                                                 </div>
@@ -316,6 +316,7 @@
                                             <button type="submit"
                                                 class="btn btn-gradient-primary mt-5">Create</button>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>

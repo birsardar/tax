@@ -14,29 +14,24 @@ class CreateInvoiceTable extends Migration
     public function up()
     {
         Schema::create('invoice', function (Blueprint $table) {
-            $table->id('InvoiceId');
-            $table->decimal('InvoiceNumber');
+            $table->id();
+            $table->string('SalesType');
+            $table->string('GST_No'); // Make sure this matches the column name in your database
+            $table->string('InvoiceNumber');
+            $table->string('PartyName');
             $table->date('InvoiceDate');
-            $table->date('DueDate');
-            $table->string('ClientBusinessAddress');
-            $table->string('ClientAddress');
-            $table->string('ClientCity');
-            $table->string('ClientPostsl');
-            $table->string('ClientState');
-            $table->string('Country');
-            $table->string('good/services');
-            $table->decimal('taxablevalue');
-            $table->decimal('HSN/SAC');
-            $table->string('quantity');
+            $table->decimal('taxablevalue', 10, 2);
+            $table->string('HSNSAC');
+            $table->string('goodservices');
             $table->string('UQC');
-            $table->string('GstRate');
-            $table->string('IGST');
-            $table->string('CGST');
-            $table->string('SGST/UTGST');
-            $table->string('SupplyType');
+            $table->decimal('quantity', 10, 2);
+            $table->decimal('GstRate', 5, 2);
+            $table->decimal('IGST', 10, 2);
+            $table->decimal('CGST', 10, 2);
+            $table->decimal('SGSTUTGST', 10, 2);
             $table->string('Status');
-            $table->unsignedBigInteger('customer_users_id');
-            $table->foreign('customer_users_id')->references('customer_users_id')->on('customer_users');
+            $table->unsignedBigInteger('customer_id');
+            $table->foreign('customer_id')->references('id')->on('add_customer');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

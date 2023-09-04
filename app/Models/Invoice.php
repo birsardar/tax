@@ -11,8 +11,23 @@ class Invoice extends Model
     protected $table = "invoice";
     protected $primaryKey = "InvoiceId";
     protected $fillable = [
-        'SalesType', 'GST_No', 'InvoiceNumber', 'PartyName', 'InvoiceDate', 'taxablevalue', 'HSNSAC',
-        'goodservices', 'UQC', 'quantity', 'GstRate', 'IGST', 'CGST', 'SGSTUTGST', 'user_id', 'Status',
+        'SalesType',
+        'GST_No', // Make sure this matches the column name in your database
+        'InvoiceNumber',
+        'PartyName',
+        'InvoiceDate',
+        'taxablevalue',
+        'HSNSAC',
+        'goodservices',
+        'UQC',
+        'quantity',
+        'GstRate',
+        'IGST',
+        'CGST',
+        'SGSTUTGST',
+        'Status',
+        'user_id',
+        'customer_id'
     ];
 
 

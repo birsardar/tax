@@ -75,7 +75,7 @@ Route::group(['middleware' => 'auth', 'revalidate'], function () {
     Route::get('/ViewAdminPurchaseBill', [PurchaseBill::class, 'ViewAdminPurchaseBill']);
     Route::post('/ViewAdminPurchaseBillSubmit', [PurchaseBill::class, 'ViewAdminPurchaseBillSubmit']);
 
-    Route::get('/CreateCustomerInvoice{id}', [CreateCustomerInvoice::class, 'CreateCustomerInvoices']);
+    Route::get('/CreateCustomerInvoice{id}', [CreateCustomerInvoice::class, 'CreateCustomerInvoices'])->name('customer-invoice');
     Route::Post('/CreateCustomerInvoice{id}', [CreateCustomerInvoice::class, 'CreateCustomerInvoicesSubmit']);
     Route::get('/AddVendors', [Vendors::class, 'AddVendors'])->name('add-vendor');
     Route::post('/SubmitVendors', [Vendors::class, 'AddVendorSubmit'])->name('submit-vendor');

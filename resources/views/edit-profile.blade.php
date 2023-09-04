@@ -71,7 +71,7 @@
                 <div class="col-lg-10 col-sm-9 col-8">
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab_block_1">
-                            <form action="{{ url('/edit-profile') }}" method="post">
+                            <form action="{{ url('/edit-profile') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row gx-3">
                                     <div class="col-sm-12">
@@ -98,7 +98,8 @@
                                     </div>
                                 </div>
                                 <div class="title title-xs title-wth-divider text-primary text-uppercase my-4">
-                                    <span>Personal Info</span></div>
+                                    <span>Personal Info</span>
+                                </div>
                                 <div class="row gx-3">
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -151,18 +152,12 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="form-label">Mobile number</label>
-                                            <input class="form-control" type="text" value="" name="mobile"
+                                            <input class="form-control" type="text" value="" name="number"
                                                 placeholder="Enter a mobile number" />
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="form-label">Pan Number</label>
-                                            <input class="form-control" type="text" value="" name="pan"
-                                                placeholder="Enter a PAN Number" />
-                                        </div>
-                                    </div>
                                 </div>
+
                                 <div class="row gx-3">
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -230,7 +225,8 @@
                                     </div>
                                 </div>
                                 <div class="title title-xs title-wth-divider text-primary text-uppercase my-4">
-                                    <span>Tracking Code</span></div>
+                                    <span>Tracking Code</span>
+                                </div>
                                 <div class="row gx-3">
                                     <div class="col-sm-12">
                                         <div class="form-group">
@@ -244,7 +240,8 @@
                                     </div>
                                 </div>
                                 <div class="title title-xs title-wth-divider text-primary text-uppercase my-4">
-                                    <span>Account Changes</span></div>
+                                    <span>Account Changes</span>
+                                </div>
                                 <div class="row gx-3">
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -314,7 +311,8 @@
                                 profile picture, initials or fallback icon.</p>
                             <form>
                                 <div class="title title-xs title-wth-divider text-primary text-uppercase my-4">
-                                    <span>Password Settings</span></div>
+                                    <span>Password Settings</span>
+                                </div>
                                 <div class="row gx-3">
                                     <div class="col-sm-12">
                                         <div class="form-group">
@@ -326,7 +324,8 @@
                                     </div>
                                 </div>
                                 <div class="title title-xs title-wth-divider text-primary text-uppercase my-4">
-                                    <span>Additional Security</span></div>
+                                    <span>Additional Security</span>
+                                </div>
                                 <div class="row gx-3">
                                     <div class="col-sm-12">
                                         <div class="form-group">

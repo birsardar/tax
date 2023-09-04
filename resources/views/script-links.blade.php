@@ -20,5 +20,8 @@
 
 <script src="{{ url('assets/plugins/intlTelInput/js/intlTelInput-jquery.min.js') }}"></script>
 
-<script src="{{ url('bootstrap/bootstrap.bundle.min.js')}}"></script>
-
+<script src="{{ url('bootstrap/bootstrap.bundle.min.js') }}"></script>
+<!-- Include SweetAlert JS -->
+{{-- <script src="{{ asset('path_to_sweetalert2_js/sweetalert2.min.js') }}"></script> --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

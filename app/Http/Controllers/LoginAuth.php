@@ -152,6 +152,7 @@ class LoginAuth extends Controller
 
     public function editprofilesubmit(Request $req)
     {
+        // dd($req->all());
         $data = [
             "tradename" => $req['name'],
             "email" => $req['email'],
@@ -161,14 +162,14 @@ class LoginAuth extends Controller
             "pin_code" => $req['pin_code'],
             "number" => $req['number'],
             "pan_no" => $req['pan'],
-            "AUTHORISED" => $req['authorised'],
+            "authorised" => $req['authorized'],
             "bank_name" => $req['bank_name'],
             "IFSC" => $req['bank_ifsc'],
             "BankAccount" => $req['bank_account'],
         ];
 
         // Use updateOrCreate to create or update the profile
-        // dd($data);
+        // dd($data, ['user_id' => Auth::user()->id]);
         edit_profile::updateOrCreate(
             ['user_id' => Auth::user()->id],
             $data

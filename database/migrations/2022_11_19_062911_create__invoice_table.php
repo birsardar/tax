@@ -37,8 +37,8 @@ class CreateInvoiceTable extends Migration
             $table->string('Status');
             $table->unsignedBigInteger('customer_users_id');
             $table->foreign('customer_users_id')->references('customer_users_id')->on('customer_users');
-            $table->unsignedBigInteger('CustomerId');
-            $table->foreign('CustomerId')->references('CustomerId')->on('add_customer');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@ class edit_profile extends Model
         'pin_code',
         'number',
         'pan_no',
-        'AUTHORISED',
+        'authorised',
         'bank_name',
         'IFSC',
         'BankAccount',

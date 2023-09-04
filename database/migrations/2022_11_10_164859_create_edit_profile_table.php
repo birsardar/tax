@@ -15,19 +15,19 @@ class CreateEditProfileTable extends Migration
     {
         Schema::create('edit_profile', function (Blueprint $table) {
             $table->id('edit_id');
-            $table->string('tradename',50);
-            $table->decimal('Gst_no',20);
-            $table->string('office_address',60);
-            $table->string('state',60);
-
-            $table->decimal('pin_code',6);
-            $table->decimal('number',10);
-            $table->string('pan_no',10);
-            $table->string('AUTHORISED SIGNATORY PERSONS NAME',60);
-            $table->string('bank_name',60);
-            $table->string('IFSC',50);
-            $table->unsignedBigInteger('customer_users_id');
-            $table->foreign('customer_users_id')->references('customer_users_id')->on('customer_users');
+            $table->string('tradename', 50);
+            $table->string('Gst_no', 20);
+            $table->string('office_address', 60);
+            $table->string('email');
+            $table->string('state', 60);
+            $table->string('pin_code', 6);
+            $table->string('number', 10);
+            $table->string('pan_no', 10);
+            $table->string('authorised', 60);
+            $table->string('bank_name', 60);
+            $table->string('IFSC', 50);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

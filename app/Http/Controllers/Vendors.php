@@ -16,37 +16,34 @@ class Vendors extends Controller
     }
 
     public function AddVendorSubmit(Request $req)
-    { 
-        try {
-            $vendor = new Vendor;
-            $vendor->VendorName = $req->input('name');
-            $vendor->VendorAddress = $req->input('address');
-            $vendor->GstNumber = $req->input('gst');
-            $vendor->PanNumber = $req->input('pan');
-            $vendor->Email = $req->input('email');
-            $vendor->MobileNumber = $req->input('phone');
-            $vendor->BankName = $req->input('BankName');
-            $vendor->IFSC = $req->input('IFSC');
-            $vendor->BankAccount = $req->input('BankAccount');
-    
-            $user_id = Auth::user()->id;
-    
-            $vendor->user_id = $user_id;
-            $vendor->save();
-    
-            // Successful form submission, redirect to success page
-            return redirect()->with('success');
-        } catch (\Exception $e) { 
-            // Error occurred, redirect back to the form with an error message
-            return redirect()->back()->withInput()->with('error_message', 'Error adding vendor. Please try again later.');
-        }
+    {
+        // dd($req->all());
+        $user_id = Auth::user()->id;
+        // dd($user_id);
+        $vendor = new Vendor;
+        $vendor->VendorName = $req->input('name');
+        $vendor->VendorAddress = $req->input('address');
+        $vendor->GstNumber = $req->input('gst');
+        $vendor->PanNumber = $req->input('pan');
+        $vendor->Email = $req->input('email');
+        $vendor->MobileNumber = $req->input('phone');
+        $vendor->BankName = $req->input('BankName');
+        $vendor->IFSC = $req->input('IFSC');
+        $vendor->BankAccount = $req->input('BankAccount');
+        $vendor->customer_users_id = $user_id;
+        $vendor->save();
+
+        // Successful form submission, redirect to success page
+        return redirect()->route('viewVendor');
     }
-    
+
 
     public function ViewVendor(Request $req)
     {
-        
-        $vendor = Vendor::where('user_id', Auth::user()->id)->get();
+        // dd("hello");
+
+        $vendor = Vendor::where('customer_users_id', Auth::user()->id)->get();
+        // dd($vendor);
         return view('/ViewVendor', compact('vendor'));
     }
     public function delete($id)
@@ -57,8 +54,8 @@ class Vendors extends Controller
 
     public function edit($VendorId)
     {
-       $VendorDetail = Vendor::find($VendorId);
-       return view('/EditVendor', compact('VendorDetail'));
+        $VendorDetail = Vendor::find($VendorId);
+        return view('/EditVendor', compact('VendorDetail'));
     }
 
     public function EditVendor($id, Request $req)
@@ -77,8 +74,9 @@ class Vendors extends Controller
         return redirect()->back();
     }
 
-    public function adminViewVendor($CustomerId){
-        $vendor=vendor::where('user_id',$CustomerId)->get();
-        return view('/ViewVendor',compact('vendor'));
+    public function adminViewVendor($CustomerId)
+    {
+        $vendor = vendor::where('user_id', $CustomerId)->get();
+        return view('/ViewVendor', compact('vendor'));
     }
 }

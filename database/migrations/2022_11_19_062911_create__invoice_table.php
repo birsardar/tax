@@ -28,6 +28,14 @@ class CreateInvoiceTable extends Migration
             $table->decimal('GstRate', 5, 2);
             $table->decimal('IGST', 10, 2);
             $table->decimal('CGST', 10, 2);
+            $table->date('DueDate')->nullable();
+            $table->string('ClientBusinessAddress')->nullable();
+            $table->string('ClientAddress')->nullable();
+            $table->string('ClientState')->nullable();
+            $table->string('ClientPostsl')->nullable();
+            $table->string('ClientCity')->nullable();
+            $table->string('ClientCountry')->nullable();
+            $table->string('SupplyType')->nullable();
             $table->decimal('SGSTUTGST', 10, 2);
             $table->string('Status');
             $table->unsignedBigInteger('customer_id');

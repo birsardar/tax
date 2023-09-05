@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class vendor extends Model
 {
     use HasFactory;
-    protected $table="vendor";
+    protected $table = "vendor";
     protected $primaryKey = "VendorId";
-    protected $fillable = ['VendorName', 'VendorAddress', 'GstNumber', 'PanNumber', 'Email', 'MobileNumber', 'BankName', 'IFSC', 'BankAccount'];
+    protected $fillable = ['VendorName', 'VendorAddress', 'GstNumber', 'PanNumber', 'Email', 'MobileNumber', 'BankName', 'IFSC', 'BankAccount', 'customer_users_id'];
 
-    public function customerUsers(){
+    public function customerUsers()
+    {
         return $this->hasMany('App\Models\CustomerUsers', 'customer_users_id', 'customer_users_id');
     }
-    
 }

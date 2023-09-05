@@ -20,12 +20,12 @@ class CreateVendorTable extends Migration
             $table->decimal('GstNumber')->nullable();
             $table->string('PanNumber')->nullable();
             $table->string('Email')->nullable();
-            $table->decimal('MobileNumber')->nullable();
+            $table->string('MobileNumber')->nullable();
             $table->string('BankName')->nullable();
             $table->string('IFSC')->nullable();
-            $table->decimal('BankAccount')->nullable();
+            $table->string('BankAccount')->nullable();
             $table->unsignedBigInteger('customer_users_id');
-            $table->foreign('customer_users_id')->references('customer_users_id')->on('customer_users');
+            $table->foreign('customer_users_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -42,17 +42,26 @@ class CreateCustomerInvoice extends Controller
     }
     public function CreateCustomerInvoicesSubmit(Request $req, $CustomerId)
     {
+
+        // dd($req->input('GST_No'));
+        if ($req->input('Paid') === null && $req->input('UnPaid') !== null) {
+            $status = "Unpaid";
+        } else {
+            $status = "Paid";
+        }
+        // dd($status);
         $user_id = Auth::user()->id;
         $Invoice = new Invoice;
         $Invoice->InvoiceNumber = $req['InvoiceNumber'];
         $Invoice->InvoiceDate = $req['InvoiceDate'];
         $Invoice->DueDate = $req['DueDate'];
+        $Invoice->PartyName = $req['PartyName'];
         $Invoice->ClientBusinessAddress = $req['ClientBussinessName'];
         $Invoice->ClientAddress = $req['ClientBussinessAddress'];
         $Invoice->ClientCity = $req['City'];
         $Invoice->ClientPostsl = $req['PostalCode'];
         $Invoice->ClientState = $req['State'];
-        $Invoice->Country = $req['Country'];
+        $Invoice->ClientCountry = $req['Country'];
         $Invoice->goodservices = $req['goodservices'];
         $Invoice->TaxableValue = $req['TaxableValue'];
         $Invoice->HSNSAC = $req['Hsn/Sac'];
@@ -61,14 +70,17 @@ class CreateCustomerInvoice extends Controller
         $Invoice->GstRate = $req['GstRate'];
         $Invoice->IGST = $req['Igst'];
         $Invoice->CGST = $req['Cgst'];
+        $Invoice->GST_No = $req['GST_No'];
         $Invoice->SGSTUTGST = $req['SGST/UTGST'];
         $Invoice->SupplyType = $req['SupplyType'];
+        $Invoice->SalesType = $req['SupplyType'];
+        $Invoice->Status = $status;
         $Invoice->paid = $req['Paid'];
         $Invoice->Unpaid = $req['UnPaid'];
         $Invoice->user_id = $user_id;
-        $Invoice->CustomerId = $CustomerId;
+        $Invoice->customer_id = $CustomerId;
         $Invoice->save();
-        return redirect()->back();
+        return redirect()->route('invoice');
     }
 
     public function ViewAdminInvoice()

@@ -76,7 +76,7 @@ Route::group(['middleware' => 'auth', 'revalidate'], function () {
     Route::post('/ViewAdminPurchaseBillSubmit', [PurchaseBill::class, 'ViewAdminPurchaseBillSubmit']);
 
     Route::get('/CreateCustomerInvoice{id}', [CreateCustomerInvoice::class, 'CreateCustomerInvoices'])->name('customer-invoice');
-    Route::Post('/CreateCustomerInvoice{id}', [CreateCustomerInvoice::class, 'CreateCustomerInvoicesSubmit']);
+    Route::Post('/CreateCustomerInvoices{id}', [CreateCustomerInvoice::class, 'CreateCustomerInvoicesSubmit'])->name('customer.invoice.submit');
     Route::get('/AddVendors', [Vendors::class, 'AddVendors'])->name('add-vendor');
     Route::post('/SubmitVendors', [Vendors::class, 'AddVendorSubmit'])->name('submit-vendor');
     Route::get('/ViewVendors', [Vendors::class, 'ViewVendor'])->name('viewVendor');
@@ -85,8 +85,8 @@ Route::group(['middleware' => 'auth', 'revalidate'], function () {
     Route::post('/EditVendor{id}', [Vendors::class, 'EditVendor'])->name('update-vendor');
     Route::get('/PurchaseBill', [PurchaseBill::class, 'Bill'])->name('purchases');
     Route::post('/PurchaseBill', [PurchaseBill::class, 'PurchaseBillSubmit']);
-    Route::get('/CreatePurchaseBill{id}', [PurchaseBill::class, 'CretePurchaseBill']);
-    Route::post('/CreatePurchaseBill{id}', [PurchaseBill::class, 'CreatePurchaseBillSubmit']);
+    Route::get('/CreatePurchaseBill{id}', [PurchaseBill::class, 'CretePurchaseBill'])->name('create-purchase-bill');
+    Route::post('/CreatePurchaseBill{id}', [PurchaseBill::class, 'CreatePurchaseBillSubmit'])->name('create-purchase-bill-submit');
 
     Route::get('/ViewInvoice', [CreateInvoice::class, 'ViewInvoice'])->name('invoice');
     Route::get('/ViewInvoice/delete{id}', [CreateInvoice::class, 'delete'])->name('delete-invoice');

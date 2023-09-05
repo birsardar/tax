@@ -61,7 +61,7 @@ class CreateInvoice extends Controller
         // dd($req->all());
         // Insert data into the 'invoice' table
         // Initialize the variables
-
+        // dd($customer);
         // Check the value of 'status' input
         $paid = 0;
         $unpaid = 0;

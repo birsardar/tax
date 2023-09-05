@@ -40,45 +40,45 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($Purchase as $Purchases)
+                                @foreach ($purchases as $Purchase)
                                     <tr>
                                         <td></td>
-                                        <td>{{ $Purchases->BillNumber }}</td>
+                                        <td>{{ $Purchase->BillNumber }}</td>
                                         <td>
-                                            <div class="text-dark">{{ $Purchases->BillDate }}</div>
+                                            <div class="text-dark">{{ $Purchase->BillDate }}</div>
                                         </td>
                                         <td>
-                                            <div class="fs-7">{{ $Purchases->good }}</div>
+                                            <div class="fs-7">{{ $Purchase->good }}</div>
                                         </td>
                                         <td>
-                                            <div class="fs-7">{{ $Purchases->taxablevalue }}</div>
+                                            <div class="fs-7">{{ $Purchase->taxablevalue }}</div>
                                         </td>
                                         <td>
-                                            <div class="fs-7">{{ $Purchases->HSN }}</div>
+                                            <div class="fs-7">{{ $Purchase->HSN }}</div>
                                         </td>
                                         <td>
-                                            <div class="fs-7">{{ $Purchases->quantity }}</div>
+                                            <div class="fs-7">{{ $Purchase->quantity }}</div>
                                         </td>
                                         <td>
-                                            <div class="fs-7">{{ $Purchases->UQC }}</div>
+                                            <div class="fs-7">{{ $Purchase->UQC }}</div>
                                         </td>
                                         <td>
-                                            <div class="fs-7">{{ $Purchases->GstRate }}</div>
+                                            <div class="fs-7">{{ $Purchase->GstRate }}</div>
                                         </td>
                                         <td>
-                                            <div class="fs-7">{{ $Purchases->IGST }}</div>
+                                            <div class="fs-7">{{ $Purchase->IGST }}</div>
                                         </td>
                                         <td>
-                                            <div class="fs-7">{{ $Purchases->CGST }}</div>
+                                            <div class="fs-7">{{ $Purchase->CGST }}</div>
                                         </td>
                                         <td>
                                             <div class="fs-7">{{ $Purchases->SGST }}</div>
                                         </td>
                                         <td>
-                                            <div class="fs-7">{{ $Purchases->Paid }}</div>
+                                            <div class="fs-7">{{ $Purchase->Paid }}</div>
                                         </td>
                                         <td>
-                                            <div class="fs-7">{{ $Purchases->UnPaid }}</div>
+                                            <div class="fs-7">{{ $Purchase->UnPaid }}</div>
                                         </td>
                                         <td>
                                             <a
@@ -88,7 +88,7 @@
                                         {{-- <td>
                                     <td><a href="{{url('/')}}{{$customers->CustomerId}}"><button class="btn btn-primary" type="button">Edit</button></a></td>
                                 </td> --}}
-                                    </tr>
+                                        {{-- </tr> --}}
                                 @endforeach
                             </tbody>
                         </table>

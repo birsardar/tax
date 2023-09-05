@@ -15,9 +15,9 @@ class CreatePurchaseBillTable extends Migration
     {
         Schema::create('purchase_bill', function (Blueprint $table) {
             $table->id('PurchaseId')->nullable();
-            $table->decimal('BillNumber')->nullable();
+            $table->string('BillNumber')->nullable();
             $table->date('BillDate')->nullable();
-            $table->string('good/services')->nullable();
+            $table->string('good')->nullable();
             $table->decimal('taxablevalue')->nullable();
             $table->decimal('HSNSAC')->nullable();
             $table->string('quantity')->nullable();
@@ -25,7 +25,7 @@ class CreatePurchaseBillTable extends Migration
             $table->string('GstRate')->nullable();
             $table->string('IGST')->nullable();
             $table->string('CGST')->nullable();
-            $table->string('SGST/UTGST')->nullable();
+            $table->string('SGST')->nullable();
             $table->decimal('Paid')->nullable();
             $table->decimal('UnPaid')->nullable();
             $table->unsignedBigInteger('customer_users_id');

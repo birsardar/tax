@@ -70,7 +70,7 @@
                                                             </div>
                                                             <div class="col-lg-6 form-group">
                                                                 <input class="form-control" value="{{ uniqid('INV') }}"
-                                                                    name="InvoiceNumber" type="text" />
+                                                                    name="BillNumber" type="text" />
                                                             </div>
                                                             <div class="row gx-3">
                                                                 <div class="col-lg-6 form-group">
@@ -78,9 +78,10 @@
                                                                         type="text" readonly />
                                                                 </div>
                                                                 <div class="col-lg-6 form-group">
-                                                                    <input class="form-control" name="InvoiceDate"
-                                                                        value="24/2/2020" type="date" />
+                                                                    <input class="form-control" name="BillDate"
+                                                                        value="<?php echo date('Y-m-d'); ?>" type="date" />
                                                                 </div>
+
                                                             </div>
                                                             <div class="row gx-3">
                                                                 <div class="col-lg-6 form-group">

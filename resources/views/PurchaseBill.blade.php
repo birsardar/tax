@@ -81,9 +81,7 @@
                                                     Purchase ID
                                                 </th>
 
-                                                <th>GST NO/ State</th>
                                                 <th>Invoice Number</th>
-                                                <th>Party's Name</th>
                                                 <th>Invoice Date</th>
                                                 <th>Goods/Service</th>
                                                 <th>Taxable Value</th>
@@ -102,13 +100,10 @@
                                             <tbody>
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $purchase->GST_No }}</td>
-                                                    <td>{{ $purchase->InvoiceNumber }}</td>
-                                                    <td>
-                                                        {{ $purchase->PartyName }}
-                                                    </td>
-                                                    <td>{{ $purchase->InvoiceDate }}</td>
-                                                    <td>{{ $purchase->goodservices }}</td>
+                                                    {{-- <td>{{ $purchase->GST_No }}</td> --}}
+                                                    <td>{{ $purchase->BillNumber }}</td>
+                                                    <td>{{ $purchase->BillDate }}</td>
+                                                    <td>{{ $purchase->good }}</td>
                                                     <td>{{ $purchase->taxablevalue }}</td>
                                                     <td>{{ $purchase->HSNSAC }}</td>
                                                     <td>{{ $purchase->quantity }}</td>
@@ -116,8 +111,11 @@
                                                     <td>{{ $purchase->GstRate }}</td>
                                                     <td>{{ $purchase->IGST }}</td>
                                                     <td>{{ $purchase->CGST }}</td>
-                                                    <td>{{ $purchase->SGSTUTGST }}</td>
-                                                    <td>{{ $purchase->Status }}</td>
+                                                    <td>{{ $purchase->SGST }}</td>
+                                                    <td>
+                                                        <p> Paid={{ $purchase->Paid }}</p>
+                                                        <p> UnPaid={{ $purchase->UnPaid }}</p>
+                                                    </td>
                                                     <td id="delete">
                                                         <div class="dropdown dropdown-action ">
                                                             <a href="#" class="btn-action-icon"

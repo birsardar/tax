@@ -16,6 +16,7 @@ class PurchaseBill extends Controller
     public function Bill()
     {
         $purchases = Purchase::where('customer_users_id', Auth::user()->id)->get();
+        // dd($purchases->p);
         $user = Auth::user()->id;
         // dd($purchases->id);
 
@@ -53,13 +54,14 @@ class PurchaseBill extends Controller
     }
     public function CreatePurchaseBillSubmit(Request $req, $VendorId)
     {
+        // dd($req->input('BillDate'));
         $user_id = Auth::user()->id;
         $PurchaseBill = new Purchase;
         $PurchaseBill->BillNumber = $req['BillNumber'];
         $PurchaseBill->BillDate = $req['BillDate'];
         $PurchaseBill->good = $req['goodservices'];
         $PurchaseBill->TaxableValue = $req['TaxableValue'];
-        $PurchaseBill->HSN = $req['Hsn/Sac'];
+        $PurchaseBill->HSNSAC = $req['Hsn/Sac'];
         $PurchaseBill->UQC = $req['UQC'];
         $PurchaseBill->quantity = $req['Quantity'];
         $PurchaseBill->GstRate = $req['GstRate'];
@@ -68,11 +70,10 @@ class PurchaseBill extends Controller
         $PurchaseBill->SGST = $req['SGST/UTGST'];
         $PurchaseBill->Paid = $req['Paid'];
         $PurchaseBill->UnPaid = $req['UnPaid'];
-        $PurchaseBill->user_id = $user_id;
+        $PurchaseBill->customer_users_id  = $user_id;
         $PurchaseBill->VendorId = $VendorId;
         $PurchaseBill->save();
-
-        return redirect()->back();
+        return redirect()->route('purchases');
     }
     public function ViewPurchaseBill(Request $req, $customer_users_id)
     {

@@ -34,6 +34,7 @@ class CreateInvoice extends Controller
     }
     public function CreateInvoiceSubmit(Request $req)
     {
+
         $validate = $req->validate([
             'SalesType' => 'required',
             'gstno' => 'required',

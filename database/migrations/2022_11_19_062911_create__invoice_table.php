@@ -39,9 +39,9 @@ class CreateInvoiceTable extends Migration
             $table->decimal('SGSTUTGST', 10, 2);
             $table->string('Status');
             $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')->references('id')->on('add_customer');
+            $table->foreign('customer_id')->references('id')->on('add_customer')->onDelete('cascade');;
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();
         });
     }

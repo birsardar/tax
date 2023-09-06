@@ -78,17 +78,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($customer as $key => $row)
+                                            @foreach ($data as $key => $row)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
                                                     <td>
                                                         <h2 class="table-avatar">
-                                                            {{ $row->VendorName }}
+                                                            {{ $row->name }}
                                                         </h2>
                                                     </td>
-                                                    <td>{{ $row->MobileNumber }}</td>
+                                                    <td>{{ $row->number }}</td>
                                                     <td>{{ $row->created_at->format('d M Y, h:i A') }}</td>
-                                                    <td>${{ $row->Email }}</td>
+                                                    <td>{{ $row->email }}</td>
                                                     <td class="d-flex align-items-center">
                                                         <div class="dropdown dropdown-action" id="adminOption">
                                                             <a href="#" class=" btn-action-icon "
@@ -98,22 +98,10 @@
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <ul>
+
                                                                     <li>
                                                                         <a class="dropdown-item"
-                                                                            href="{{ route('adminCustomerView', ['id' => $row->VendorId]) }}">
-                                                                            <i
-                                                                                class="far fa-trash-alt me-2"></i>Customers
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="dropdown-item"
-                                                                            href="{{ route('adminViewVendor', ['id' => $row->VendorId]) }}">
-                                                                            <i class="far fa-trash-alt me-2"></i>Vendors
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="dropdown-item"
-                                                                            href="{{ route('delete-customer-admin', ['id' => $row->VendorId]) }}">
+                                                                            href="{{ route('delete-customer-user', ['id' => $row->id]) }}">
                                                                             <i class="far fa-trash-alt me-2"></i>Delete
                                                                         </a>
                                                                     </li>

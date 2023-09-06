@@ -34,19 +34,17 @@ class CreateCustomerInvoice extends Controller
             }
         }
         // dd($index);
-
-
-
-
         return view('/CreateCustomerInvoice', compact('CustomerDetail', 'user', 'user_profile', 'index'));
     }
     public function CreateCustomerInvoicesSubmit(Request $req, $CustomerId)
     {
+        // dd($req->all());
         $validation = $req->validate([
+            'PartyName' => 'required',
             'InvoiceNumber' => 'required',
             'InvoiceDate' => 'required',
             'DueDate' => 'required',
-            'PartyName' => 'required',
+            'GST_No' => 'required',
             'ClientBussinessName' => 'required',
             'ClientBussinessAddress' => 'required',
             'City' => 'required',
@@ -61,15 +59,13 @@ class CreateCustomerInvoice extends Controller
             'GstRate' => 'required',
             'Igst' => 'required',
             'Cgst' => 'required',
-            'GST_No' => 'required',
             'SGST/UTGST' => 'required',
             'SupplyType' => 'required',
-            'SalesType' => 'required',
-            'Paid' => 'required',
-            'UnPaid' => 'required',
+
+
         ]);
 
-        // dd($req->input('GST_No'));
+
         if ($req->input('Paid') === null && $req->input('UnPaid') !== null) {
             $status = "Unpaid";
         } else {

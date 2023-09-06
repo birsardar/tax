@@ -12,6 +12,7 @@ class Vendors extends Controller
 {
     public function AddVendors()
     {
+        // dd('hello');
         return view('AddVendor');
     }
 

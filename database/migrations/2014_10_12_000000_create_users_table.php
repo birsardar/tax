@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateUsersTable extends Migration
 {
@@ -33,6 +34,9 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        DB::table('add_customer')->where('user_id', 'id')->delete();
+
+        // Now, you can delete the user.
+        DB::table('users')->where('id', 'id')->delete();
     }
 }

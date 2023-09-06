@@ -29,9 +29,9 @@ class CreatePurchaseBillTable extends Migration
             $table->decimal('Paid')->nullable();
             $table->decimal('UnPaid')->nullable();
             $table->unsignedBigInteger('customer_users_id');
-            $table->foreign('customer_users_id')->references('id')->on('add_customer');
+            $table->foreign('customer_users_id')->references('id')->on('add_customer')->onDelete('cascade');;
             $table->unsignedBigInteger('VendorId');
-            $table->foreign('VendorId')->references('VendorId')->on('vendor');
+            $table->foreign('VendorId')->references('VendorId')->on('vendor')->onDelete('cascade');;
             $table->timestamps();
         });
     }

@@ -25,7 +25,7 @@ class CreateVendorTable extends Migration
             $table->string('IFSC')->nullable();
             $table->string('BankAccount')->nullable();
             $table->unsignedBigInteger('customer_users_id');
-            $table->foreign('customer_users_id')->references('id')->on('users');
+            $table->foreign('customer_users_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();
         });
     }

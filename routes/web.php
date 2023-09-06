@@ -56,7 +56,9 @@ Route::group(['middleware' => 'auth', 'revalidate'], function () {
     Route::post('/edit-profile-submit', [LoginAuth::class, "editprofilesubmit"])->name('edit-profile-submit');
     Route::get('settings', [LoginAuth::class, "accountSetting"])->name('settings');
     Route::get('/admin-customer-details', [Admin::class, "customerView"])->name('companies');
-    Route::get('/delete-customer-admin{id}', [Admin::class], 'deleteCustomerAdmin')->name('delete-customer-admin');
+    Route::get('/customer-user-details', [Admin::class, "customerUserView"])->name('customer-user');
+    Route::get('/delete-customer-admin{id}', [Admin::class, 'deleteCustomerAdmin'])->name('delete-customer-admin');
+    Route::get('/delete-customer-user{id}', [Admin::class, 'deleteCustomerUser'])->name('delete-customer-user');
     // Route::view('/admin-customer-page', 'admin-customer-page');
     Route::get('/add-customer', [AddCustomer::class, "AddCustomer"])->name('add-customer');
     Route::post('/add-customer', [AddCustomer::class, "AddCustomerSubmit"])->name('add.customer.submit');

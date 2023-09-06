@@ -89,12 +89,11 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>
                                                         <h2 class="table-avatar">
-                                                            <a href="profile.html" class="avatar avatar-md me-2"><img
+                                                            {{-- <a href="profile.html" class="avatar avatar-md me-2"><img
                                                                     class="avatar-img rounded-circle"
                                                                     src="assets/img/profiles/avatar-02.jpg"
-                                                                    alt="User Image"></a>
-                                                            <a
-                                                                href="profile.html">{{ $customerRecord->CustomerName }}</a>
+                                                                    alt="User Image"></a> --}}
+                                                            {{ $customerRecord->CustomerName }}
                                                         </h2>
                                                     </td>
                                                     <td>{{ $customerRecord->MobileNumber }}</td>

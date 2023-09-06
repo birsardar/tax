@@ -18,7 +18,17 @@ class AddCustomer extends Controller
 
     public function AddCustomerSubmit(Request $req)
     {
-        // Retrieve the user ID associated with the logged-in user
+        $validation = $req->validate([
+            'CustomerName' => 'required',
+            'CustomerAddress' => 'required',
+            'GstNumber' => 'required',
+            'PanNumber' => 'required',
+            'Email' => 'required',
+            'MobileNumber' => 'required',
+            'BankName' => 'required',
+            'IFSC' => 'required',
+            'BankAccount' => 'required',
+        ]);
         $user_id = Auth::user()->id;
 
         // Save the new customer data to the database using the create method

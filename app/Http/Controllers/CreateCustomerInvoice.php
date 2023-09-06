@@ -42,6 +42,32 @@ class CreateCustomerInvoice extends Controller
     }
     public function CreateCustomerInvoicesSubmit(Request $req, $CustomerId)
     {
+        $validation = $req->validate([
+            'InvoiceNumber' => 'required',
+            'InvoiceDate' => 'required',
+            'DueDate' => 'required',
+            'PartyName' => 'required',
+            'ClientBussinessName' => 'required',
+            'ClientBussinessAddress' => 'required',
+            'City' => 'required',
+            'PostalCode' => 'required',
+            'State' => 'required',
+            'Country' => 'required',
+            'goodservices' => 'required',
+            'TaxableValue' => 'required',
+            'Hsn/Sac' => 'required',
+            'UQC' => 'required',
+            'Quantity' => 'required',
+            'GstRate' => 'required',
+            'Igst' => 'required',
+            'Cgst' => 'required',
+            'GST_No' => 'required',
+            'SGST/UTGST' => 'required',
+            'SupplyType' => 'required',
+            'SalesType' => 'required',
+            'Paid' => 'required',
+            'UnPaid' => 'required',
+        ]);
 
         // dd($req->input('GST_No'));
         if ($req->input('Paid') === null && $req->input('UnPaid') !== null) {

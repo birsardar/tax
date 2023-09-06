@@ -34,24 +34,23 @@ class CreateInvoice extends Controller
     }
     public function CreateInvoiceSubmit(Request $req)
     {
-        // dd($req->all());
-        // Validate the form data
-        // $req->validate([
-        //     'SalesType' => 'required',
-        //     'InvoiceNo' => 'required',
-        //     'name' => 'required',
-        //     'date' => 'required|date',
-        //     'taxValue' => 'required|numeric',
-        //     'code' => 'required',
-        //     'goods/service' => 'required',
-        //     'UQC' => 'required',
-        //     'quantity' => 'required|numeric',
-        //     'rate' => 'required|numeric',
-        //     'IGST' => 'required|numeric',
-        //     'CGST' => 'required|numeric',
-        //     'gstValue' => 'required|numeric',
-        //     'stauts' => 'required'
-        // ]);
+        $validate = $req->validate([
+            'SalesType' => 'required',
+            'gstno' => 'required',
+            'InvoiceNo' => 'required',
+            'name' => 'required',
+            'date' => 'required',
+            'taxValue' => 'required',
+            'code' => 'required',
+            'goods/service' => 'required',
+            'UQC' => 'required',
+            'quantity' => 'required',
+            'rate' => 'required',
+            'IGST' => 'required',
+            'CGST' => 'required',
+            'gstValue' => 'required',
+            'status' => 'required',
+        ]);
 
         // Assuming the user is authenticated
         $user_id = Auth::user()->id;

@@ -77,41 +77,49 @@
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            @foreach ($data as $key => $row)
-                                                <tr>
-                                                    <td>{{ $key + 1 }}</td>
-                                                    <td>
-                                                        <h2 class="table-avatar">
-                                                            {{ $row->name }}
-                                                        </h2>
-                                                    </td>
-                                                    <td>{{ $row->number }}</td>
-                                                    <td>{{ $row->created_at->format('d M Y, h:i A') }}</td>
-                                                    <td>{{ $row->email }}</td>
-                                                    <td class="d-flex align-items-center">
-                                                        <div class="dropdown dropdown-action" id="adminOption">
-                                                            <a href="#" class=" btn-action-icon "
-                                                                data-bs-toggle="dropdown" aria-expanded="false"
-                                                                onclick='openDropdown()'>
-                                                                <i class="fas fa-ellipsis-v"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <ul>
+                                        @if (isset($data) && count($data) > 0)
+                                            <tbody>
+                                                @foreach ($data as $key => $row)
+                                                    <tr>
+                                                        <td>{{ $key + 1 }}</td>
+                                                        <td>
+                                                            <h2 class="table-avatar">
+                                                                {{ $row->name }}
+                                                            </h2>
+                                                        </td>
+                                                        <td>{{ $row->number }}</td>
+                                                        <td>{{ $row->created_at->format('d M Y, h:i A') }}</td>
+                                                        <td>{{ $row->email }}</td>
+                                                        <td class="d-flex align-items-center">
+                                                            <div class="dropdown dropdown-action" id="adminOption">
+                                                                <a href="#" class=" btn-action-icon "
+                                                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                                                    onclick='openDropdown()'>
+                                                                    <i class="fas fa-ellipsis-v"></i>
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                    <ul>
 
-                                                                    <li>
-                                                                        <a class="dropdown-item"
-                                                                            href="{{ route('delete-customer-user', ['id' => $row->id]) }}">
-                                                                            <i class="far fa-trash-alt me-2"></i>Delete
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
+                                                                        <li>
+                                                                            <a class="dropdown-item"
+                                                                                href="{{ $row->id === null ? '/' : route('delete-customer-user', ['id' => $row->id]) }}">
+                                                                                <i
+                                                                                    class="far fa-trash-alt me-2"></i>Delete
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        @else
+                                            <tr>
+                                                <td colspan="6" class="text-center">
+                                                    No Data Found </td>
+                                            </tr>
+                                        @endif
                                     </table>
                                 </div>
                             </div>

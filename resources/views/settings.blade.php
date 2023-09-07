@@ -79,7 +79,7 @@
                                 <form action="{{ route('edit-profile-submit') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
-                                    <div class="row form-group">
+                                    {{-- <div class="row form-group">
                                         <label for="avatar" class="col-sm-3 col-form-label input-label">Avatar</label>
                                         <div class="col-sm-9">
                                             <div class="d-flex align-items-center">
@@ -94,51 +94,60 @@
                                                 </label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="row form-group">
                                         <label for="name" class="col-sm-3 col-form-label input-label">Bussiness
-                                            Name</label>
+                                            Name<span class="text-muted">*</span></label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="name"
-                                                placeholder="Your Name" name="name" data-required>
+                                                placeholder="Your Name" name="name" value={{ $user->name }}
+                                                data-required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="email" class="col-sm-3 col-form-label input-label">Email</label>
+                                        <label for="email" class="col-sm-3 col-form-label input-label">Email<span
+                                                class="text-muted">*</span></label>
                                         <div class="col-sm-9">
                                             <input type="email" class="form-control" id="email"
-                                                placeholder="Email" name="email" required>
+                                                placeholder="Email" value="{{ $user->email }}" name="email" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="phone" class="col-sm-3 col-form-label input-label">Phone </label>
+                                        <label for="phone" class="col-sm-3 col-form-label input-label">Phone<span
+                                                class="text-muted">*</span> </label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="phone"
-                                                placeholder="+x(xxx)xxx-xx-xx" name="number" required>
+                                                placeholder="Enter Phone Number" name="number"
+                                                value="{{ $user->number }}" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="location"
-                                            class="col-sm-3 col-form-label input-label">Location</label>
+                                        <label for="location" class="col-sm-3 col-form-label input-label">Location<span
+                                                class="text-muted">*</span></label>
                                         <div class="col-sm-9">
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" id="location"
-                                                    placeholder="Country" name="country" required>
+                                                    placeholder="Country" name="country" required
+                                                    value="{{ $edit_user === null ? '' : $edit_user->country }}">
+
                                             </div>
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="City"
                                                     name="city" required>
                                             </div>
                                             <input type="text" class="form-control" placeholder="State"
+                                                value="{{ $edit_user === null ? '' : $edit_user->state }}"
                                                 name="state" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="addressline1" class="col-sm-3 col-form-label input-label">Address
-                                            line 1</label>
+                                            line 1<span class="text-muted">*</span></label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="addressline1"
-                                                placeholder="Your address" name="address" required>
+                                                placeholder="Your address"
+                                                value="{{ $edit_user === null ? '' : $edit_user->office_address }}"
+                                                name="address" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -151,51 +160,61 @@
                                     </div>
                                     <div class="row form-group">
                                         <label for="zipcode" class="col-sm-3 col-form-label input-label">Pin
-                                            Code</label>
+                                            Code<span class="text-muted">*</span></label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="zipcode"
-                                                placeholder="Your pin code" name="pin_code" required>
+                                                placeholder="Your pin code"
+                                                value="{{ $edit_user === null ? '' : $edit_user->pin_code }}"
+                                                name="pin_code" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="gst_no" class="col-sm-3 col-form-label input-label">Gst No.<span
-                                                class="text-muted">(Optional)</span></label>
+                                                class="text-muted">*</span></label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="gst_no"
-                                                placeholder="Your Gst number" name="gst">
+                                            <input type="text" class="form-control" id="gst_no" placeholder=""
+                                                name="gst"
+                                                value="{{ $edit_user === null ? '' : $edit_user->Gst_no }}">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="pan" class="col-sm-3 col-form-label input-label">Pan
-                                            No.</label>
+                                            No.<span class="text-muted">*</span></label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="pan"
-                                                placeholder="Your Pan No." name="pan" required>
+                                                placeholder="Your Pan No."
+                                                value="{{ $edit_user === null ? '' : $edit_user->pan_no }}"
+                                                name="pan" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="auth" class="col-sm-3 col-form-label input-label">Authorised
-                                            Person's Name</label>
+                                            Person's Name<span class="text-muted">*</span></label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="auth"
                                                 placeholder="Authorised Signatory Person's Name" name="authorized"
+                                                value="{{ $edit_user === null ? '' : $edit_user->authorised }}"
                                                 required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="bank_detail" class="col-sm-3 col-form-label input-label">Bank
-                                            Details</label>
+                                            Details<span class="text-muted">*</span></label>
                                         <div class="col-sm-9">
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" id="bank_name"
-                                                    placeholder="bank name" name="bank_name" required>
+                                                    placeholder="bank name"
+                                                    value="{{ $edit_user === null ? '' : $edit_user->bank_name }}"name="bank_name"
+                                                    required>
                                             </div>
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="bank IFSC"
-                                                    value="" name="bank_ifsc" required>
+                                                    value="{{ $edit_user === null ? '' : $edit_user->IFSC }}"
+                                                    name="bank_ifsc" required>
                                             </div>
                                             <input type="text" class="form-control" placeholder="account no."
-                                                value="" name="bank_account" required>
+                                                value="{{ $edit_user === null ? '' : $edit_user->BankAccount }}"
+                                                name="bank_account" required>
                                         </div>
                                     </div>
                                     <div class="text-end">

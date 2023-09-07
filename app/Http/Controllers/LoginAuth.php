@@ -131,7 +131,12 @@ class LoginAuth extends Controller
 
     public function accountSetting(Request $req)
     {
-        return view('settings');
+        $user = User::where('id', Auth::user()->id)->first();
+        $edit_user = edit_profile::where('user_id', Auth::user()->id)->first();
+        // dd($edit_user);
+
+
+        return view('settings', compact('user', 'edit_user'));
     }
     public function signOut(Request $request)
     {
@@ -145,14 +150,29 @@ class LoginAuth extends Controller
     }
 
 
-    public function editprofile()
+    public function editprofile($id)
     {
+
         return view('edit-profile');
     }
 
     public function editprofilesubmit(Request $req)
     {
-        // dd($req->all());
+
+        $validation = $req->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'gst' => 'required',
+            'address' => 'required',
+            'state' => 'required',
+            'pin_code' => 'required',
+            'number' => 'required|numeric',
+            'pan' => 'required',
+            'authorized' => 'required',
+            'bank_name' => 'required',
+            'bank_ifsc' => 'required',
+            'bank_account' => 'required',
+        ]);
         $data = [
             "tradename" => $req['name'],
             "email" => $req['email'],
